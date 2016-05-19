@@ -14,12 +14,19 @@ function valghalla_polling_station_ctools_plugin_api($module = NULL, $api = NULL
 }
 
 /**
+ * Implements hook_views_api().
+ */
+function valghalla_polling_station_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
+}
+
+/**
  * Implements hook_node_info().
  */
 function valghalla_polling_station_node_info() {
   $items = array(
     'polling_station' => array(
-      'name' => t('Valgsted'),
+      'name' => t('valgsted'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
@@ -27,5 +34,6 @@ function valghalla_polling_station_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
